@@ -8,6 +8,9 @@ configuration → validated decisions → bounded retries → human approval →
 trail**. Runs 100% offline on the standard library — no model keys, no network, no
 install step beyond Python 3.10+.
 
+**Status:** public, offline V1 reference implementation. All fixtures and adapters
+are synthetic; this repository contains no customer data or production credentials.
+
 ## The problem
 
 Enterprise pilots die in the gap between "the demo worked" and "audit will sign
@@ -107,6 +110,8 @@ and retry-then-recover.
 
 ## Architecture
 
+![FDE Workbench architecture](docs/architecture.svg)
+
 ```mermaid
 flowchart LR
     A["requirement.md<br/>documents/*.txt<br/>invoices.csv<br/>vendors.json<br/>rules.json"] --> B["ingest"]
@@ -150,6 +155,14 @@ scripts/            demo.sh, test.sh, serve.sh
 - Risk scoring is rules-based, not a trained model; swap in `RiskScoreTool`.
 - Single-process run store for the HTTP API (in-memory dict); persist via the JSONL audit files for anything durable.
 - No auth on the local API — it's a localhost demo surface, not a product endpoint.
+
+## Recruiter lens
+
+This is intentionally FDE-shaped engineering: translate an ambiguous requirement
+into configuration, integrate imperfect inputs, encode business rules, recover from
+tool failures, and leave an auditable decision that a human can approve. It is a
+portfolio implementation exercise, not a claim of FDE employment or customer
+deployment.
 
 ## Roadmap
 
