@@ -1,0 +1,7 @@
+invoice_id,vendor_name,amount,currency,po_number,invoice_date,description
+INV-1001,Northwind Traders,"$1,200.00",USD,PO-501,2026-07-02,Bearings shipment lot 44
+INV-1002,Globex Corp,18500,USD,PO-502,2026-07-03,Expedited actuator order
+INV-1003,Initech LLC,4800,USD,PO-503,2026-07-05,Control panels — amount disputed
+INV-1004,Umbrella Supply,3200,EUR,,2026-07-06,Solvent drums — PO TBD
+INV-1005,northwind traders,1200.00,usd,PO-501,2026-07-07,Bearings shipment lot 44 duplicate?
+INV-1006,Hooli Industrial,2300,USD,PO-506,2026-07-08,Compressor seals

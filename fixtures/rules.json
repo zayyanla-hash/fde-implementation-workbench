@@ -1,0 +1,9 @@
+{
+  "max_auto_approve_amount": 5000.0,
+  "allowed_currencies": ["USD"],
+  "require_po_match": true,
+  "blocked_vendors": ["V-GLOBEX"],
+  "high_risk_score_threshold": 70,
+  "allow_duplicate_amounts": false,
+  "auto_approve_low_risk_only": true
+}

@@ -1,0 +1,9 @@
+FINANCE POLICY NOTE Q3 (synthetic)
+
+1. Auto-approve ONLY: amount <= $5,000 AND currency = USD AND matched OPEN PO
+   within 2% AND vendor active AND risk score < 70.
+2. Everything else -> human approval queue. Rejections require approver + reason.
+3. Duplicate (vendor, amount) pairs must be flagged as warnings for review.
+4. Blocked vendors are NEVER payable (reject outright).
+5. Vendor-master API is flaky: retry transient failures up to 3 attempts.
+6. Every stage transition must be audit-logged (auditors arrive in 3 weeks).

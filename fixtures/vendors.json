@@ -1,0 +1,16 @@
+{
+  "vendors": {
+    "V-NORTHWIND": {"name": "Northwind Traders", "aliases": ["northwind traders", "Northwind"], "status": "active", "country": "US"},
+    "V-GLOBEX": {"name": "Globex Corp", "aliases": ["globex"], "status": "under_review", "country": "US"},
+    "V-INITECH": {"name": "Initech LLC", "aliases": ["initech"], "status": "active", "country": "US"},
+    "V-UMBRELLA": {"name": "Umbrella Supply", "aliases": ["umbrella"], "status": "active", "country": "DE"},
+    "V-HOOLI": {"name": "Hooli Industrial", "aliases": ["hooli"], "status": "active", "country": "US"}
+  },
+  "purchase_orders": {
+    "PO-501": {"vendor_id": "V-NORTHWIND", "total": 1200.0, "status": "open"},
+    "PO-502": {"vendor_id": "V-GLOBEX", "total": 18500.0, "status": "open"},
+    "PO-503": {"vendor_id": "V-INITECH", "total": 4100.0, "status": "open"},
+    "PO-506": {"vendor_id": "V-HOOLI", "total": 2300.0, "status": "open"},
+    "PO-507": {"vendor_id": "V-NORTHWIND", "total": 999.0, "status": "closed"}
+  }
+}

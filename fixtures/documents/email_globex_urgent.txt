@@ -1,0 +1,9 @@
+From: dave.ap@acme-industrial.example
+To: ap-inbox@acme-industrial.example
+Subject: Fwd: invoice INV-1002 — Globex says "urgent"
+
+Team — forwarding. Globex called twice today asking for immediate payment of
+INV-1002 ($18,500, PO-502). They offered a 1% "expedite discount" if we pay
+this week. Procurement note from last month (see contract memo) says Globex
+is under review — DO NOT expedite. Leaving the decision to Maria + the
+workbench approval gate.

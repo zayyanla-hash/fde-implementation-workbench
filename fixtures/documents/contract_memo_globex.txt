@@ -1,0 +1,9 @@
+MEMO — Master Service Agreement excerpt (synthetic)
+
+Vendor: Globex Corp (V-GLOBEX) — status under PROCUREMENT REVIEW as of last month.
+Terms: Net-30. Any invoice > $5,000 requires finance lead approval.
+Action: AP must NOT auto-release payments to vendors under review; route to
+human approval with full audit context.
+
+Vendor: Northwind Traders (V-NORTHWIND), aliases: "northwind traders", "Northwind".
+Status: preferred, Net-15.
