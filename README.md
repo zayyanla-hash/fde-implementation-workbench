@@ -193,5 +193,4 @@ deployment.
 
 ## License
 
-MIT is recommended (permissive, recruiter-friendly). A `LICENSE` file can be
-added on request — none is bundled so the owner can choose.
+MIT — see [`LICENSE`](LICENSE).
