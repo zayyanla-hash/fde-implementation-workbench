@@ -65,6 +65,26 @@ PYTHONPATH=src python3 -m workbench demo
 Optional: `cp .env.example .env` to tweak scenario, audit dir, port, and
 failure-injection knobs. No secrets exist or are needed.
 
+## Recruiter demo deployment
+
+The repository includes a Vercel-ready, browser-based demo at `index.html` and
+three small Python functions under `api/`. Import the repository into Vercel
+with the root directory left unchanged; no environment variables or database
+are required.
+
+- `POST /api/run` recreates the real synthetic fixture pipeline for every demo
+  run.
+- `POST /api/approve` recreates that deterministic run, applies the existing
+  `ApprovalGate`, and returns the resulting audit receipt.
+- The UI deliberately labels itself a **Demo session**: its visible state lives
+  only in the browser and resets on refresh. This is honest serverless behavior,
+  not a claim of durable customer-data storage.
+
+For a local visual demo, run `./scripts/serve.sh` for the original API or serve
+the repository root with any static server plus the Vercel functions emulator.
+The core workflow itself remains fully offline and reproducible with the
+Quickstart commands above.
+
 ## Example output (real, abridged — run id varies per run)
 
 ```
