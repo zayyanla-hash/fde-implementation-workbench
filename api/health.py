@@ -1,6 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 
-from _shared import send_json
+from api._shared import send_json
 
 
 class handler(BaseHTTPRequestHandler):

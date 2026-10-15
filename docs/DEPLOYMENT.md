@@ -24,7 +24,7 @@ python3 scripts/build_site.py
 git diff --check
 ```
 
-68 tests cover the original workflows plus 18 hosted adapter tests. Browser verification must exercise the actual deployed import, rejected dependencies, saved changes, reload, and both downloads.
+70 tests cover the original workflows, 18 hosted adapter tests, and two serverless invoice packaging regressions. Browser verification must exercise the actual deployed import, rejected dependencies, saved changes, reload, and both downloads.
 
 Deployments are staged as production builds with `vercel deploy --prod --skip-domain`. Verify the staged health/API responses with `vercel curl --deployment <url>` before promoting that exact build using `vercel promote <url>`. Production's canonical alias is public; preview and immutable deployment URLs use Vercel Standard Protection.
 
