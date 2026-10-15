@@ -42,7 +42,7 @@ For a safe-rendering check, put `<img src=x onerror=alert(1)>` in a free-text fi
 
 ## Optional browser regression
 
-The core app and Python tests need no third-party packages. If the **Ego Browser CLI is already installed**, the checked-in `scripts/browser_smoke.js` can replay the browser checks. It is an optional verification tool, not an application runtime dependency.
+The Python runtime and tests need no third-party packages to install. The frontend includes the locally vendored Motion library and Manrope font. If the **Ego Browser CLI is already installed**, the checked-in `scripts/browser_smoke.js` can replay the browser checks. It is an optional verification tool, not an application runtime dependency.
 
 Stop the earlier demo server with Ctrl-C first. From the repository root, start a fresh database on the script's default port:
 

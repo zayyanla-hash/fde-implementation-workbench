@@ -2,6 +2,8 @@
 
 This is a local Python HTTP backend with a SQLite database and a plain HTML/CSS/JavaScript frontend. It adds an onboarding workflow beside the repository's existing invoice pipeline. It does not depend on an LLM, live integration, or cloud service.
 
+The frontend serves a pinned Motion 14.2.0 browser bundle and an OFL-licensed Manrope font from the same local server. These are vendored assets, not Python dependencies or cloud services. The strict self-only Content Security Policy is retained. The map and stage inspector derive their content from the saved customer/task state and render imported values through text APIs.
+
 ## Request and state flow
 
 1. The browser loads the known static assets from `src/workbench/static/`.

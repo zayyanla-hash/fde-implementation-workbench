@@ -221,7 +221,10 @@ class Handler(BaseHTTPRequestHandler):
         path = urlparse(self.path).path
         static_files = {"/": ("index.html", "text/html; charset=utf-8"),
                         "/app.js": ("app.js", "text/javascript; charset=utf-8"),
-                        "/styles.css": ("styles.css", "text/css; charset=utf-8")}
+                        "/styles.css": ("styles.css", "text/css; charset=utf-8"),
+                        "/manrope.ttf": ("manrope.ttf", "font/ttf"),
+                        "/favicon.svg": ("favicon.svg", "image/svg+xml"),
+                        "/motion-14.2.0.js": ("motion-14.2.0.js", "text/javascript; charset=utf-8")}
         if path in static_files:
             name, content_type = static_files[path]
             self._bytes(200, (STATIC_DIR / name).read_bytes(), content_type)

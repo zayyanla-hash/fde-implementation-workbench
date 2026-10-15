@@ -4,6 +4,14 @@ A local tool for an implementation specialist turning incomplete customer intake
 
 The example is an invented AI software company onboarding an invented business customer. It starts with a missing technical owner and a sandbox-access blocker, so the demo shows the failure and correction as well as the happy path. No real customer data, external services, credentials, or model API are required.
 
+## Interface
+
+A warm editorial workspace with a live handoff map, customer-specific stage inspection, a task ledger, and keyboard-friendly editing. The map reflects saved state; it does not execute integrations. Motion can be paused and respects the device's reduced-motion setting.
+
+![Workbench desktop](docs/screenshots/workbench-desktop.png)
+
+[Design, motion, and verification notes](docs/UI_DESIGN.md) · [Third-party licenses and pinned sources](THIRD_PARTY.md)
+
 ## Start here
 
 From the repository root, with Python 3.10 or newer:
@@ -15,7 +23,7 @@ PYTHONPATH=src python -m unittest discover -s tests -v
 WORKBENCH_DB="$PWD/var/onboarding.sqlite3" PYTHONPATH=src python -m workbench serve --port 8765
 ```
 
-Open **http://127.0.0.1:8765/**. Stop the server with Ctrl-C. There are no runtime packages to install; the app uses Python's standard library and plain browser JavaScript. Run these commands in a second terminal to check syntax and replay the original invoice demo:
+Open **http://127.0.0.1:8765/**. Stop the server with Ctrl-C. There are no runtime packages to install; the backend uses Python's standard library. The vanilla JavaScript frontend includes a locally vendored Motion animation library and Manrope font; no CDN connection or frontend build is needed. Run these commands in a second terminal to check syntax and replay the original invoice demo:
 
 ```bash
 source .venv/bin/activate
@@ -30,6 +38,8 @@ For a separate demo database, set `WORKBENCH_DB` to another local file before st
 The October 14, 2026 local verification passed **50 Python tests**, up from the **15-test baseline**. The source-run commands also passed in a clean temporary virtual environment with Python **3.14.7**, no third-party packages, and no warnings.
 
 Separately, **15 real-browser smoke checks passed**: incomplete CSV intake and correction, five-task generation, rejected dependency transitions, sibling draft preservation, all five tasks completed in order, duplicate no-op, explicit conflict, reload with 11 activity entries, actual JSON/CSV downloads, a 390 px screen without horizontal overflow, tablet Refresh visibility, literal HTML/script rendering, offline feedback, and no captured uncaught errors. The [optional browser script](scripts/browser_smoke.js) is separate from the Python suite; [run instructions](docs/ONBOARDING_DEMO.md#optional-browser-regression) require an already installed Ego Browser CLI.
+
+The subsequent frontend redesign reran all **50 Python tests** and recorded **19 browser checks** across animation controls, map navigation, customer selection, and 320/390/900/1440 px layouts, plus manual CSV/JSON correction, task editing, persistence, and download flows. These checks are separate from the earlier smoke run above. See [UI design notes](docs/UI_DESIGN.md).
 
 ## What the onboarding workflow does
 

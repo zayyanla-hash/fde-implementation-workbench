@@ -1,0 +1,27 @@
+{
+  "motion_version": "14.2.0",
+  "motion_archive_integrity": "sha512-45cDwjZh0yOMZtnX3hIFPIPmzCWz/RC2bD/niWVIssGBjJlMmosbDILG9a+ZyoP635Z5xrbKvuo10spv9dBdnw==",
+  "vengeance_revision": "2cf9379129a0167f0210cfd70a4fa4415c09f9e0",
+  "assets": {
+    "motion-14.2.0.js": {
+      "bytes": 153875,
+      "sha256": "7893e009c6a71eb372a599e1bf97a330247ca15f579aecd21f0c791413b259b9"
+    },
+    "Motion-LICENSE.txt": {
+      "bytes": 1100,
+      "sha256": "1bf0dc3f7727723e5a032ed12164a47cf92c05204cb1a3485f123c24e2833ed1"
+    },
+    "Vengeance-LICENSE.txt": {
+      "bytes": 1072,
+      "sha256": "b90027fc729c84a7e3b976b046996a685f5b1a2f448f5bc3514ce32314b77c46"
+    },
+    "manrope.ttf": {
+      "bytes": 164700,
+      "sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6"
+    },
+    "Manrope-OFL.txt": {
+      "bytes": 4387,
+      "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+    }
+  }
+}
