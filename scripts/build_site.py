@@ -13,7 +13,7 @@ for item in static.iterdir():
 page = (static / "index.html").read_text()
 page = page.replace('<script src="/app.js" defer></script>', '<script src="/browser-store.js" defer></script>\n    <script src="/app.js" defer></script>')
 page = page.replace('Local workspace', 'Public demo')
-page = re.sub(r'Synthetic customers\.\s+Real validation\.', 'Synthetic customers. Plans stay in this browser.', page)
+page = re.sub(r'Synthetic customers\.\s+Real\s+validation\.', 'Synthetic customers. Plans stay in this browser.', page)
 page = page.replace('A local, synthetic customer onboarding demonstration', 'An interactive synthetic customer onboarding demonstration')
 page = page.replace('synthetic data · saved locally', 'synthetic data · saved in this browser')
 (OUTPUT / "index.html").write_text(page)

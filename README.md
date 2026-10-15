@@ -1,5 +1,7 @@
 # FDE Implementation Workbench
 
+**[Live demo](https://fde-implementation-workbench-ascend4.vercel.app) · [Source on GitHub](https://github.com/zayyanla-hash/fde-implementation-workbench)**
+
 A local tool for an implementation specialist turning incomplete customer intake into an owned, reviewable launch plan. Import a synthetic customer's CSV or JSON, fix field-level errors, generate a checklist, resolve dependencies, and export the plan.
 
 The example is an invented AI software company onboarding an invented business customer. It starts with a missing technical owner and a sandbox-access blocker, so the demo shows the failure and correction as well as the happy path. No real customer data, external services, credentials, or model API are required.
@@ -62,7 +64,7 @@ Follow the [reproducible walkthrough and two-minute demo](docs/ONBOARDING_DEMO.m
 
 The repository already contained a synthetic invoice-processing CLI and HTTP API, mock vendor/PO/risk/payment adapters, retry logic, human approval, JSONL event logging, a browser invoice demo with serverless wrappers, and 15 passing baseline tests. The original invoice walkthrough remains in [docs/DEMO.md](docs/DEMO.md).
 
-This version adds the customer-onboarding domain, browser interface, SQLite persistence, strict request handling, portable plan export, and regression coverage. The existing invoice browser demo uses root `index.html`, `api/`, and `vercel.json`. The new onboarding UI is served from `src/workbench/static/` by the local Python server; it is not integrated into that separate serverless demo or deployed. The invoice scenario and onboarding plan are separate workflows. Invoice API run objects remain in memory; onboarding state uses SQLite. The mock invoice demo does not move real money.
+This version adds the customer-onboarding domain, browser interface, SQLite persistence, strict request handling, portable plan export, and regression coverage. The existing invoice browser demo uses root `index.html`, `api/`, and `vercel.json`. The redesigned onboarding UI is served locally from `src/workbench/static/` and published at the Vercel root by the hosted build. The previous invoice page remains available at `/invoice/`. The invoice scenario and onboarding plan are separate workflows. Local invoice API run objects remain in memory; local onboarding state uses SQLite and hosted onboarding state uses each visitor’s IndexedDB. The mock invoice demo does not move real money.
 
 ## How it fits together
 
@@ -90,10 +92,10 @@ flowchart LR
 
 ## Scope and limitations
 
-This is an AI-assisted portfolio implementation exercise with a real local HTTP backend and deterministic business rules. It demonstrates a small end-to-end workflow; it does not establish production deployment, customer adoption, or operational savings.
+This is an AI-assisted portfolio implementation exercise with a real local HTTP backend and deterministic business rules. It demonstrates a small end-to-end workflow; it is deployed as a public portfolio demo, without evidence of real customer adoption or operational savings.
 
-The server binds to loopback and has no authentication, roles, encryption-at-rest policy, backups, or tamper-evident activity history. SQLite stores the whole onboarding state as one document, which keeps the slice small but is unsuitable for large multi-user workloads without further design. Same-origin checks and safe text rendering reduce specific demo risks; they are not a security audit. The checklist records a human's status updates and does not provision an integration or verify that a customer accepted a launch.
+The local server binds to loopback and has no authentication, roles, encryption-at-rest policy, backups, or tamper-evident activity history. SQLite stores the whole onboarding state as one document, which keeps the slice small but is unsuitable for large multi-user workloads without further design. Same-origin checks and safe text rendering reduce specific demo risks; they are not a security audit. The checklist records a human's status updates and does not provision an integration or verify that a customer accepted a launch.
 
 No AI inference is needed at runtime. Before using résumé claims or presenting the project, work through the [interview guide](docs/INTERVIEW_GUIDE.md) and reproduce the demo yourself.
 
-Publication status at this handoff: the onboarding changes are local and have not been published. The [existing public repository](https://github.com/zayyanla-hash/fde-implementation-workbench) contains the earlier baseline; that URL does not yet expose this new work.
+Publication status: the onboarding implementation, redesign, and hosted adapter are published in [this GitHub repository](https://github.com/zayyanla-hash/fde-implementation-workbench) and the [live Vercel demo](https://fde-implementation-workbench-ascend4.vercel.app). Vercel releases currently use direct CLI deployment; automatic Git deployments are not connected because Vercel’s Git integration lacks access to this repository.

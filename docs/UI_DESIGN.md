@@ -35,7 +35,7 @@ All animated styles progressively enhance visible HTML. Missing Motion does not 
 - JavaScript syntax and Git whitespace checks passed. Six local assets returned 200 with expected content types.
 - Rendered desktop and mobile screenshots were inspected. No captured console warnings/errors in the final browser session.
 
-These checks do not establish production readiness, complete accessibility conformance, or real customer outcomes. The original invoice browser/serverless surface is unchanged. No deployment or GitHub push was performed.
+These checks do not establish production readiness, complete accessibility conformance, or real customer outcomes. The original invoice browser/serverless surface is unchanged. That design checkpoint was local. The subsequent authorized release publishes it on GitHub and Vercel using the adapter described in [deployment notes](DEPLOYMENT.md).
 
 ## Reproduce
 

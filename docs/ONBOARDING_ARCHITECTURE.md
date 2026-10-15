@@ -96,7 +96,7 @@ Malformed HTTP request JSON receives 400; invalid request fields/types receive 4
 
 `workflow.py`, `normalize.py`, `validate.py`, `tools.py`, `retry.py`, `approval.py`, and `audit.py` implement the original synthetic invoice scenario. Its routes remain `/health`, `/scenarios`, `/runs`, `/runs/{id}`, `/runs/{id}/approve`, and `/runs/{id}/audit`. The CLI still runs it with `PYTHONPATH=src python -m workbench demo`.
 
-The public baseline also contains an invoice browser demo in root `index.html`, with serverless handlers under `api/` and `vercel.json`. Those files are retained from public revision `7c14198`; this change does not deploy or add onboarding to that separate surface. The onboarding UI is served by the local Python server from `src/workbench/static/`.
+The public baseline also contains an invoice browser demo in root `index.html`, with serverless handlers under `api/` and `vercel.json`. The invoice HTML and Python function logic are retained from public revision `7c14198`. The deployment configuration now serves onboarding at `/` and retains the invoice page at `/invoice/`. The local Python server still serves onboarding from `src/workbench/static/`.
 
 Onboarding does not reuse payment approval or pretend to be a new invoice adapter. It shares the local HTTP server and standard-library approach, while keeping its own domain rules and SQLite state. Invoice run objects remain process-local. Existing JSONL invoice logs and the onboarding activity list are ordinary editable local files, not secure audit evidence.
 

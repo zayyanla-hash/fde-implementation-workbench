@@ -1,6 +1,6 @@
 # Interview guide and defensible résumé language
 
-This is an AI-assisted portfolio project. AI helped with implementation, tests, and documentation. Do not describe generated code as unaided work or claim customer adoption, production deployment, money moved, or time saved. Present the code paths and verification you can reproduce, then explain what you personally understand and changed.
+This is an AI-assisted portfolio project. AI helped with implementation, tests, and documentation. Do not describe generated code as unaided work or claim customer adoption, production customer use, money moved, or time saved. A public Vercel portfolio demo has since been deployed; distinguish that deployment from production readiness. Present the code paths and verification you can reproduce, then explain what you personally understand and changed.
 
 ## Two résumé-bullet options
 
