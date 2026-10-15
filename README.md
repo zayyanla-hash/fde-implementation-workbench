@@ -12,6 +12,12 @@ A warm editorial workspace with a live handoff map, customer-specific stage insp
 
 [Design, motion, and verification notes](docs/UI_DESIGN.md) · [Third-party licenses and pinned sources](THIRD_PARTY.md)
 
+## Hosted demo
+
+The Vercel build serves the redesigned onboarding workspace at `/` and retains the original invoice demonstration at `/invoice/`. Each visitor's plan is saved in **their browser's IndexedDB**. Python functions validate intake, task changes, generated dependencies, and exports using the same domain rules as the local app. No customer database is shared between visitors.
+
+The local source commands below still use SQLite. Hosted browser storage stays with that browser and domain; clearing site data removes it. There is no account sync or cross-device plan sharing. Use synthetic data and download the plan when you need a portable copy. See [deployment details](docs/DEPLOYMENT.md).
+
 ## Start here
 
 From the repository root, with Python 3.10 or newer:

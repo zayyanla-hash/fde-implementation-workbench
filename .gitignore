@@ -10,3 +10,6 @@ dist/
 .env
 .DS_Store
 .venv/
+.vercel/
+public/
+.env*

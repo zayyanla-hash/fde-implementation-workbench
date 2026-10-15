@@ -1,7 +1,29 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "python3 scripts/build_site.py",
+  "outputDirectory": "public",
   "functions": {
     "api/*.py": {
-      "runtime": "python3.12"
+      "includeFiles": "{src/workbench/**,fixtures/**,rules/**}",
+      "maxDuration": 15
     }
-  }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "same-origin" }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"
+        }
+      ]
+    }
+  ]
 }

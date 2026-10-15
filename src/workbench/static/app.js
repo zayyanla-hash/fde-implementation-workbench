@@ -283,6 +283,8 @@ function clear(node) {
 }
 
 async function request(path, options = {}) {
+  if (window.WorkbenchTransport)
+    return window.WorkbenchTransport.request(path, options);
   let response;
   try {
     response = await fetch(path, {
@@ -325,8 +327,10 @@ function setStorage(ok, detail) {
   byId("storage-indicator").className =
     `storage-indicator ${ok ? "connected" : "failed"}`;
   byId("storage-label").textContent = ok
-    ? "Saved on this computer"
-    : "Local storage unavailable";
+    ? window.WorkbenchTransport
+      ? "Saved in this browser"
+      : "Saved on this computer"
+    : "Plan storage unavailable";
   byId("storage-detail").textContent = detail;
   updateControls();
 }
@@ -452,7 +456,12 @@ async function loadSavedPlan({ announce = false } = {}) {
         "success",
       );
   } catch (error) {
-    setStorage(false, "Refresh to reconnect to the local server.");
+    setStorage(
+      false,
+      window.WorkbenchTransport
+        ? "Refresh to reconnect to the demo service."
+        : "Refresh to reconnect to the local server.",
+    );
     pageFeedback(error.message, "error");
   } finally {
     setBusy(false);
