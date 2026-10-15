@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A local, synthetic customer onboarding demonstration with deterministic validation and dependency checks.">
+  <title>Customer onboarding · Implementation Workbench</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to onboarding workspace</a>
+  <header class="site-header">
+    <a class="brand" href="#main" aria-label="Implementation Workbench home">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>Implementation <strong>Workbench</strong></span>
+    </a>
+    <nav aria-label="Workspace sections">
+      <a href="#intake">Intake</a>
+      <a href="#plan">Plan</a>
+      <a href="#history">Activity</a>
+    </nav>
+    <span class="local-badge"><span aria-hidden="true"></span>Local demo</span>
+  </header>
+
+  <main id="main">
+    <section class="page-intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Customer implementation</p>
+        <h1 id="page-title">A clear path from intake to launch.</h1>
+        <p class="intro-copy">Validate the handoff, assign the work, and make every dependency visible.</p>
+      </div>
+      <div class="storage-status">
+        <span class="storage-indicator" id="storage-indicator" aria-hidden="true"></span>
+        <div><strong id="storage-label">Connecting to local storage</strong><span id="storage-detail">Loading the saved plan…</span></div>
+        <button class="text-button" id="refresh-plan" type="button">Refresh</button>
+      </div>
+    </section>
+
+    <div class="demo-notice"><span class="notice-symbol" aria-hidden="true">i</span><p><strong>Synthetic example, real workflow.</strong> No real customer data or company usage. Changes stay in this local demo; no AI service is required.</p></div>
+    <div id="page-feedback" class="feedback page-feedback" role="status" aria-live="polite" hidden></div>
+
+    <div class="intake-layout">
+      <section class="panel intake-panel" id="intake" aria-labelledby="intake-heading">
+        <div class="section-heading">
+          <div class="heading-with-step"><span class="step-number" aria-hidden="true">01</span><div><h2 id="intake-heading">Customer intake</h2><p>Start with CSV or a JSON array.</p></div></div>
+          <button id="load-example" class="button button-secondary" type="button">Load example</button>
+        </div>
+        <div class="source-controls">
+          <div class="format-field"><label for="intake-format">Format</label><select id="intake-format"><option value="csv">CSV</option><option value="json">JSON</option></select></div>
+          <div class="file-field"><label for="intake-file">Or choose a file</label><input id="intake-file" type="file" accept=".csv,.json,text/csv,application/json"><span id="file-feedback" class="field-help"></span></div>
+        </div>
+        <label class="source-label" for="intake-source">Intake source <span>Edit the source here to resolve issues.</span></label>
+        <textarea id="intake-source" spellcheck="false" autocomplete="off" autocapitalize="off" aria-describedby="source-help" placeholder="Load the synthetic example, paste customer intake, or choose a file."></textarea>
+        <details class="schema-details"><summary>Required fields &amp; format</summary><div><p id="source-help">Each customer needs all seven fields. Owner fields must be email addresses. Customer IDs use lowercase letters, numbers, underscores or hyphens, up to 64 characters.</p><code>customer_id, customer_name, integration, technical_owner, data_access_owner, launch_owner, acceptance_criteria</code><p>CSV includes a header row. JSON is an array of objects. Unknown fields, conflicting IDs and malformed source are reported. Imports with errors are not saved.</p></div></details>
+        <div class="intake-actions"><button id="validate-intake" class="button button-secondary" type="button">Validate intake</button><button id="create-plan" class="button button-primary" type="button" disabled>Create plan <span aria-hidden="true">→</span></button><span id="intake-action-help" class="field-help">Validate before creating a plan.</span></div>
+      </section>
+
+      <aside class="panel validation-panel" aria-labelledby="validation-heading">
+        <div class="validation-heading"><span class="eyebrow">Check the handoff</span><span id="validation-badge" class="pill pill-neutral">Waiting for source</span></div>
+        <h2 id="validation-heading">Good plans start<br>with complete context.</h2>
+        <p id="validation-summary" class="validation-summary" role="status" aria-live="polite">Load the example to find a missing technical owner before any work is created.</p>
+        <div id="validation-issues"></div>
+        <div id="validation-empty" class="validation-guide"><span aria-hidden="true">✓</span><div><strong>Nothing is silently skipped</strong><p>Every issue points to its row and field. Correct the source, validate again, then create the checklist.</p></div></div>
+        <p class="example-hint" id="example-hint" hidden>For this synthetic example, set <code>technical_owner</code> to <code>technical-owner@example.test</code>, then validate again.</p>
+        <div class="validation-footer"><span aria-hidden="true">01</span>Import<span class="step-line" aria-hidden="true"></span><span aria-hidden="true">02</span>Validate<span class="step-line" aria-hidden="true"></span><span aria-hidden="true">03</span>Plan</div>
+      </aside>
+    </div>
+
+    <section id="plan" class="plan-section" aria-labelledby="plan-heading">
+      <div class="section-heading plan-heading">
+        <div class="heading-with-step"><span class="step-number" aria-hidden="true">02</span><div><h2 id="plan-heading">Implementation plan</h2><p>Owners, next steps, and the reasons work is waiting.</p></div></div>
+        <div class="export-actions" aria-label="Download implementation plan"><a class="button button-secondary export-link" id="export-json" href="/api/onboarding/export?format=json" download="implementation-plan.json" aria-disabled="true">↓ JSON</a><a class="button button-secondary export-link" id="export-csv" href="/api/onboarding/export?format=csv" download="implementation-plan.csv" aria-disabled="true">↓ CSV</a></div>
+      </div>
+      <div class="plan-metrics" aria-label="Plan overview"><div><span id="customer-count">0</span><p>Customers</p></div><div><span id="task-count">0</span><p>Total tasks</p></div><div><span id="complete-count">0</span><p>Completed</p></div><div><span id="waiting-count">0</span><p>With blockers or dependencies</p></div></div>
+      <div id="plan-content"><div class="empty-state"><span class="empty-icon" aria-hidden="true">≡</span><h3>Your implementation plan will appear here.</h3><p>Load the example, resolve the missing owner, and create a five-step onboarding checklist.</p><a href="#intake" class="text-link">Start with customer intake <span aria-hidden="true">↑</span></a></div></div>
+    </section>
+
+    <section id="history" class="panel history-panel" aria-labelledby="history-heading">
+      <div class="section-heading"><div class="heading-with-step"><span class="step-number" aria-hidden="true">03</span><div><h2 id="history-heading">Local demo activity</h2><p>Editable storage, not a secure audit trail.</p></div></div><span id="activity-count" class="pill pill-neutral">0 events</span></div>
+      <ol class="activity-list" id="activity-list"><li class="activity-empty">Imports and saved task changes will be recorded here with their timestamps.</li></ol>
+      <button id="show-all-activity" class="text-button" type="button" hidden>Show all activity</button>
+    </section>
+    <footer class="site-footer"><span>Implementation Workbench</span><p>A deterministic onboarding demonstration · synthetic data · saved locally</p></footer>
+  </main>
+</body>
+</html>

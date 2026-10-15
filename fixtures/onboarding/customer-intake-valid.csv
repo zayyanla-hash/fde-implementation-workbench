@@ -1,0 +1,2 @@
+customer_id,customer_name,integration,technical_owner,data_access_owner,launch_owner,acceptance_criteria
+harbor-demo,Harbor Demo Co (synthetic),Sandbox CRM export,technical-owner@example.test,data-owner@example.test,launch-owner@example.test,Import three synthetic accounts and reconcile all three record IDs.

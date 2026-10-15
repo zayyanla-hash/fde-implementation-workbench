@@ -1,0 +1,11 @@
+[
+  {
+    "customer_id": "harbor-demo",
+    "customer_name": "Harbor Demo Co (synthetic)",
+    "integration": "Sandbox CRM export",
+    "technical_owner": "",
+    "data_access_owner": "data-owner@example.test",
+    "launch_owner": "launch-owner@example.test",
+    "acceptance_criteria": "Import three synthetic accounts and reconcile all three record IDs."
+  }
+]

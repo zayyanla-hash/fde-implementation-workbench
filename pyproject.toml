@@ -16,5 +16,8 @@ workbench = "workbench.cli:main"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+workbench = ["static/*.html", "static/*.js", "static/*.css"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

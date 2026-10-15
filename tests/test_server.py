@@ -71,6 +71,7 @@ class ServerTest(unittest.TestCase):
         except urllib.error.HTTPError as exc:
             self.assertEqual(exc.code, 400)
             exc.read()
+            exc.close()
         else:
             self.fail("expected HTTP 400")
 

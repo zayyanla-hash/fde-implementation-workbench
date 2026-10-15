@@ -33,13 +33,17 @@ PYTHONPATH=src python3 -m workbench list-scenarios
 
 ```bash
 # 1. health
-curl -s localhost:8765/health
+curl -sS http://127.0.0.1:8765/health
 # 2. run the pipeline
-curl -s -X POST localhost:8765/runs -d '{"scenario":"vendor_payments_v1"}' | python3 -m json.tool | head -40
+INVOICE_RESPONSE="$(curl -sS -X POST http://127.0.0.1:8765/runs \
+  -H 'Content-Type: application/json' -d '{"scenario":"vendor_payments_v1"}')"
+INVOICE_RUN_ID="$(python3 -c 'import json, sys; print(json.load(sys.stdin)["run_id"])' <<< "$INVOICE_RESPONSE")"
+python3 -m json.tool <<< "$INVOICE_RESPONSE"
 # 3. inspect audit trail
-curl -s localhost:8765/runs/<run_id>/audit | python3 -m json.tool | head -30
+curl -sS "http://127.0.0.1:8765/runs/$INVOICE_RUN_ID/audit" | python3 -m json.tool
 # 4. human approves the uncertain case
-curl -s -X POST localhost:8765/runs/<run_id>/approve \
+curl -sS -X POST "http://127.0.0.1:8765/runs/$INVOICE_RUN_ID/approve" \
+  -H 'Content-Type: application/json' \
   -d '{"invoice_id":"INV-1004","approve":true,"approver":"maria","reason":"one-off solvent buy"}'
 ```
 
