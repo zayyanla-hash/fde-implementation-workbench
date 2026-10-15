@@ -80,4 +80,4 @@ Observed local results on October 14, 2026: **50 Python tests passed** in a clea
 
 Open the README, run this walkthrough, and inspect `onboarding.py` beside the domain tests. The useful evidence is the correction path, server-enforced dependencies, failed-change preservation, reload, and portable export. Avoid implying that passing tests measures customer outcomes or proves production readiness.
 
-The new onboarding branch is local at this handoff. The existing public repository does not yet contain these changes; use this checkout and walkthrough for review until publication is separately authorized.
+The onboarding workflow is now published in the public repository and hosted demo. Local persistence uses SQLite; the hosted demo uses per-browser IndexedDB. See DEPLOYMENT.md for that boundary.

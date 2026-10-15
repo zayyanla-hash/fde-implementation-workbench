@@ -41,6 +41,12 @@ PYTHONPATH=src python -m workbench demo
 
 For a separate demo database, set `WORKBENCH_DB` to another local file before starting the server. Reusing the same file keeps the onboarding plan across reloads and server restarts.
 
+## Reproducible CI
+
+[Python checks](https://github.com/zayyanla-hash/fde-implementation-workbench/actions/workflows/ci.yml) runs on pull requests, pushes to main, and manual dispatch. The matrix covers Python 3.10 (minimum supported) and 3.14, uses read-only repository permissions, and pins its actions to commit SHAs. Each job runs `bash scripts/test.sh` (compile plus unittest discovery) and `python scripts/build_site.py` (hosted static build). No third-party Python packages or credentials are required. Browser regression checks remain separate.
+
+On October 15, 2026, a fresh local run passed **70 Python tests** and the hosted build. The historical verification below describes the earlier 50-test revision; the suite has since gained hosted-onboarding and invoice-handler coverage. CI results are available at the workflow link once the workflow is published and run.
+
 ## Verified results
 
 The October 14, 2026 local verification passed **50 Python tests**, up from the **15-test baseline**. The source-run commands also passed in a clean temporary virtual environment with Python **3.14.7**, no third-party packages, and no warnings.
